@@ -15,7 +15,7 @@ nextflow.enable.dsl = 2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { REDISCOVERTE  } from './workflows/rediscoverte'
+include { REDISCOVERTE_PIPELINE  } from './workflows/rediscoverte_pipeline'
 include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_rediscoverte_pipeline'
 include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_rediscoverte_pipeline'
 
@@ -51,12 +51,13 @@ workflow MSK_REDISCOVERTE {
     //
     // WORKFLOW: Run pipeline
     //
-    REDISCOVERTE (
+    REDISCOVERTE_PIPELINE (
         samplesheet
     )
 
     emit:
-    multiqc_report = REDISCOVERTE.out.multiqc_report // channel: /path/to/multiqc_report.html
+    versions       = REDISCOVERTE_PIPELINE.out.versions       // channel: [ path(versions.yml) ]
+    rediscoverte   = REDISCOVERTE_PIPELINE.out.rediscoverte   // channel: [ path(rollup)]
 
 }
 /*
@@ -98,8 +99,7 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        params.hook_url,
-        MSK_REDISCOVERTE.out.multiqc_report
+        params.hook_url
     )
 }
 

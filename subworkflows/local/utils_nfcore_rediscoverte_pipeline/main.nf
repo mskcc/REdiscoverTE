@@ -83,21 +83,9 @@ workflow PIPELINE_INITIALISATION {
     Channel
         .fromSamplesheet("input")
         .map {
-            meta, fastq_1, fastq_2 ->
-                if (!fastq_2) {
-                    return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
-                } else {
-                    return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
+            meta, fastq ->
+                    [meta, fastq ]
                 }
-        }
-        .groupTuple()
-        .map {
-            validateInputSamplesheet(it)
-        }
-        .map {
-            meta, fastqs ->
-                return [ meta, fastqs.flatten() ]
-        }
         .set { ch_samplesheet }
 
     emit:
@@ -120,7 +108,6 @@ workflow PIPELINE_COMPLETION {
     outdir          //    path: Path to output directory where results will be published
     monochrome_logs // boolean: Disable ANSI colour codes in log output
     hook_url        //  string: hook URL for notifications
-    multiqc_report  //  string: Path to MultiQC report
 
     main:
 
@@ -131,7 +118,7 @@ workflow PIPELINE_COMPLETION {
     //
     workflow.onComplete {
         if (email || email_on_fail) {
-            completionEmail(summary_params, email, email_on_fail, plaintext_email, outdir, monochrome_logs, multiqc_report.toList())
+            completionEmail(summary_params, email, email_on_fail, plaintext_email, outdir, monochrome_logs, [])
         }
 
         completionSummary(monochrome_logs)
