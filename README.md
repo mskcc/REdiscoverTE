@@ -10,20 +10,11 @@
 
 ## Introduction
 
-**msk/rediscoverte** is a bioinformatics pipeline that ...
+**msk/rediscoverte** is a bioinformatics pipeline that quantifies genome-wide TE expression in RNA sequencing data. This is the nextflow pipeline for REdiscoverTE found here: https://github.com/ucsffrancislab/REdiscoverTE
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
-
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
-
-1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
-2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+1. Index transcriptome ([`Salmon Index`](https://combine-lab.github.io/salmon/getting_started/#indexing-txome))
+2. Quantify reads ([`Salmon Quant`](https://combine-lab.github.io/salmon/getting_started/#quantifying-samples))
+3. Run REdiscoverTE ([`REdiscoverTE`](https://github.com/ucsffrancislab/REdiscoverTE))
 
 ## Usage
 
@@ -38,8 +29,8 @@ First, prepare a samplesheet with your input data that looks as follows:
 `samplesheet.csv`:
 
 ```csv
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
+sample,fastq
+SAMPLE_SINGLE_END,input_R1.fq.gz
 ```
 
 Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
@@ -63,7 +54,7 @@ nextflow run msk/rediscoverte \
 
 ## Credits
 
-msk/rediscoverte was originally written by nikhil.
+msk/rediscoverte was originally written by [nikhil](https://github.com/nikhil).
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
@@ -79,6 +70,8 @@ If you would like to contribute to this pipeline, please see the [contributing g
 <!-- If you use msk/rediscoverte for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
 
 <!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
+
+> Kong, Y., Rose, C.M., Cass, A.A. et al. Transposable element expression in tumors is associated with immune infiltration and increased antigenicity. Nat Commun 10, 5228 (2019). https://doi.org/10.1038/s41467-019-13035-2
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
