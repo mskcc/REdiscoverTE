@@ -2,6 +2,27 @@
     "name": "msk/rediscoverte",
     "homePage": "https://github.com/msk/rediscoverte",
     "repos": {
+        "https://github.com/mskcc-omics-workflows/modules.git": {
+            "modules": {
+                "msk": {
+                    "rediscoverte": {
+                        "branch": "develop",
+                        "git_sha": "6ef0c27234b8128d6729c5c0f4019fc6a7ef5bea",
+                        "installed_by": ["modules"]
+                    },
+                    "salmon/index": {
+                        "branch": "develop",
+                        "git_sha": "2fc9b061b55f02ca759b1214a751fb897da3463d",
+                        "installed_by": ["modules"]
+                    },
+                    "salmon/quant": {
+                        "branch": "develop",
+                        "git_sha": "2fc9b061b55f02ca759b1214a751fb897da3463d",
+                        "installed_by": ["modules"]
+                    }
+                }
+            }
+        },
         "https://github.com/nf-core/modules.git": {
             "modules": {
                 "nf-core": {
@@ -12,7 +33,7 @@
                     },
                     "multiqc": {
                         "branch": "master",
-                        "git_sha": "b7ebe95761cd389603f9cc0e0dc384c0f663815a",
+                        "git_sha": "314d742bdb357a1df5f9b88427b3b6ac78aa33f7",
                         "installed_by": ["modules"]
                     }
                 }
