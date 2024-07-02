@@ -7,12 +7,12 @@
                 "msk": {
                     "rediscoverte": {
                         "branch": "develop",
-                        "git_sha": "6ef0c27234b8128d6729c5c0f4019fc6a7ef5bea",
+                        "git_sha": "1e79e20c4c51713c65d60ffded20ad5fbd19ad53",
                         "installed_by": ["modules"]
                     },
                     "salmon/index": {
                         "branch": "develop",
-                        "git_sha": "2fc9b061b55f02ca759b1214a751fb897da3463d",
+                        "git_sha": "1e79e20c4c51713c65d60ffded20ad5fbd19ad53",
                         "installed_by": ["modules"]
                     },
                     "salmon/quant": {
