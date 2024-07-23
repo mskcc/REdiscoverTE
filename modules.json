@@ -7,12 +7,12 @@
                 "msk": {
                     "rediscoverte": {
                         "branch": "develop",
-                        "git_sha": "1e79e20c4c51713c65d60ffded20ad5fbd19ad53",
+                        "git_sha": "e121b82924885e82bcd70adad55827cb5e3f5444",
                         "installed_by": ["modules"]
                     },
                     "salmon/index": {
                         "branch": "develop",
-                        "git_sha": "1e79e20c4c51713c65d60ffded20ad5fbd19ad53",
+                        "git_sha": "7c7ccb87bbbeff18ba86d1023ae2f24b44d8b692",
                         "installed_by": ["modules"]
                     },
                     "salmon/quant": {
@@ -28,12 +28,12 @@
                 "nf-core": {
                     "fastqc": {
                         "branch": "master",
-                        "git_sha": "285a50500f9e02578d90b3ce6382ea3c30216acd",
+                        "git_sha": "46eca555142d6e597729fcb682adcc791796f514",
                         "installed_by": ["modules"]
                     },
                     "multiqc": {
                         "branch": "master",
-                        "git_sha": "314d742bdb357a1df5f9b88427b3b6ac78aa33f7",
+                        "git_sha": "b80f5fd12ff7c43938f424dd76392a2704fa2396",
                         "installed_by": ["modules"]
                     }
                 }
