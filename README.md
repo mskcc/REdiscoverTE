@@ -21,8 +21,19 @@
 > [!NOTE]
 > If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.
 
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
+#### Running nextflow @ MSKCC
+
+If you are runnning this pipeline on a MSKCC cluster you need to make sure nextflow is properly configured for the HPC envirornment:
+
+```bash
+module load java/jdk-17.0.8
+module load singularity/3.7.1
+export PATH=$PATH:/path/to/nextflow/binary
+export SINGULARITY_TMPDIR=/path/to/network/storage/for/singularity/tmp/files
+export NXF_SINGULARITY_CACHEDIR=/path/to/network/storage/for/singularity/cache
+```
+
+### Running the pipeline
 
 First, prepare a samplesheet with your input data that looks as follows:
 
@@ -35,15 +46,11 @@ SAMPLE_SINGLE_END,input_R1.fq.gz
 
 Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
 
--->
-
 Now, you can run the pipeline using:
 
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
-
 ```bash
-nextflow run msk/rediscoverte \
-   -profile <docker/singularity/.../institute> \
+nextflow run main.nf \
+   -profile singularity,juno \
    --input samplesheet.csv \
    --outdir <OUTDIR>
 ```
@@ -65,11 +72,6 @@ We thank the following people for their extensive assistance in the development 
 If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
 
 ## Citations
-
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use msk/rediscoverte for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
 
 > Kong, Y., Rose, C.M., Cass, A.A. et al. Transposable element expression in tumors is associated with immune infiltration and increased antigenicity. Nat Commun 10, 5228 (2019). https://doi.org/10.1038/s41467-019-13035-2
 
